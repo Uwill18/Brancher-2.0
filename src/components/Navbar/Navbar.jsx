@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar,Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-import logo from '../../assets/commerce.png';
+import logo from '../../assets/leaf_nuevo.png';
 import useStyles from './styles';
 
 
@@ -15,8 +15,8 @@ const Navbar = () => {
      <Toolbar>
         <Typography variant="h6" className={classes.title} color="inherit">
             {/* logo will appear on the left */}
-            <img src={logo} alt="Commerce.js" height="25px" classMame={classes.image}/>
-          Commerce.js
+            <img src={logo} alt="Commerce.js" height="25px"  className={classes.image}/>
+          Brancher
         </Typography>
         {/* classes.grow gives the navbar responsiveness to grow or shrink accordingly */}
         <div className={classes.grow}/>

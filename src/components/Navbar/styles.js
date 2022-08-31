@@ -14,12 +14,13 @@ export default makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    alignItems: 'center',
+    /*alignItems: 'center',*/
     display: 'flex',
     textDecoration: 'none',
+    marginLeft:'25px',
   },
   image: {
-    marginRight: '10px',
+    marginRight: '15px',
   },
   menuButton: {
     marginRight: theme.spacing(2),

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
 import Product from './Product/Product';
-
+import useStyles from './styles';
 
 //array of objects
 const products = [
@@ -11,9 +11,10 @@ const products = [
 
 
 const Products = () => {
-
+    const classes = useStyles();
     return(
-        <main>
+        <main className={classes.content}>
+        <div className={classes.toolbar}/>
         <Grid container justifyContent="center" spacing={4}
         >
             {/* mapping function maps to a callback funcgtion, and loops through the items
