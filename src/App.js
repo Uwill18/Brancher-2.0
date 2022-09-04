@@ -10,22 +10,23 @@ import {commerce} from './lib/commerce'
 
 const App = () => {
 
-  /**used statedful variables and effects to update the arrary for products */
+  /**used stateful variables and effects to update the arrary for products */
   const[products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
-    const [data] = await commerce.products.list();
+    const {data} = await commerce.products.list();
     setProducts(data);
   }
-
+//hook starts as empty on render
   useEffect(()=> {
   fetchProducts();
   },[]);
+  console.log(products);
 
   return (
     <div>
     <Navbar/>
-    <Products/>
+    <Products products={products}/>
     </div>
   )
 }

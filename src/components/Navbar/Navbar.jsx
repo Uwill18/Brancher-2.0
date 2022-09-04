@@ -21,7 +21,7 @@ const Navbar = () => {
         {/* classes.grow gives the navbar responsiveness to grow or shrink accordingly */}
         <div className={classes.grow}/>
         <div className={classes.button}>
-            <IconButton aria-labe="Show cart items" color="inherit"></IconButton>
+            <IconButton aria-label="Show cart items" color="inherit"></IconButton>
             <Badge badgeContent={2} color="secondary">
                 <ShoppingCart/>
             </Badge>
