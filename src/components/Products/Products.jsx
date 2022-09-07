@@ -12,7 +12,7 @@ const Products = ({products}) => {
         <div className={classes.toolbar}/>
         <Grid container justifyContent="center" spacing={4}
         >
-            {/* mapping function maps to a callback funcgtion, and loops through the items
+            {/* mapping function maps to a callback function, and loops through the items
             of the products array to create a new list displayed to the application */}
          {products.map((product)=>(
           <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>

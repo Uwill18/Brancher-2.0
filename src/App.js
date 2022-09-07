@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState,useEffect} from 'react'
  import Products from './components/Products/Products';
+// import Product from './components/Products/Product/Product';
 import Navbar from './components/Navbar/Navbar';
 import {commerce} from './lib/commerce'
 
@@ -18,6 +19,7 @@ const App = () => {
     setProducts(data);
   }
 //hook starts as empty on render
+
   useEffect(()=> {
   fetchProducts();
   },[]);
