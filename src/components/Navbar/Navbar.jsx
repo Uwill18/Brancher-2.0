@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className={classes.grow}/>
         <div className={classes.button}>
             <IconButton aria-label="Show cart items" color="inherit"></IconButton>
-            <Badge badgeContent={2} color="secondary">
+            <Badge badgeContent={2} color="secondary" overlap="rectangular">
                 <ShoppingCart/>
             </Badge> 
         </div>
