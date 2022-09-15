@@ -5,13 +5,13 @@ import useStyles from './styles';
 //
 
 const Cart = ({cart}) => {
-const isEmpty = !cart.line_items.length;
+
 const classes = useStyles();
 const EmptyCart = () => (
 <Typography variant="subtitle1">Try adding items again. Shopping cart currently empty!</Typography>
 );
 
-const FilledCart =()=> {
+const FilledCart =()=> (
     <>
     <Grid container spacing={3}>
      {cart.line_items.map((item)=>(
@@ -22,7 +22,7 @@ const FilledCart =()=> {
     </Grid>
     <div className={classes.cardDetails}>
     <Typography variant="h4">
-     Subtotal:{cart.subtotal_formatted_with_symbol}
+     Subtotal: {cart?.subtotal.formatted_with_symbol}
     </Typography>
     <div>
         <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary">
@@ -34,15 +34,15 @@ const FilledCart =()=> {
     </div>
     </div>
     </>
-}
+);
 
-
+if(!cart.line_items) return 'Loading..';
 
   return (
 <Container>
     <div className={classes.toolbar}/>
     <Typography className={classes.title} variant="h3">Your Shopping Cart</Typography>
-     {isEmpty ? <EmptyCart/> : <FilledCart />}
+     {!cart.line_items.length ? <EmptyCart/> : <FilledCart />}
 </Container>
   )
 }
