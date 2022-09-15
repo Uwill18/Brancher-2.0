@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid} from '@material-ui/core';
 import Product from './Product/Product';
 import useStyles from './styles';
+import SubHeader from '../SubHeader';
 
 //
 
@@ -10,8 +11,8 @@ const Products = ({products, onAddToCart}) => {
     return(
         <main className={classes.content}>
         <div className={classes.toolbar}/>
-        <Grid container justifyContent="center" spacing={4}
-        >
+        <SubHeader current={'Home'}/>
+        <Grid container justifyContent="center" spacing={4}>
             {/* mapping function maps to a callback function, and loops through the items
             of the products array to create a new list displayed to the application */}
          {products.map((product)=>(
