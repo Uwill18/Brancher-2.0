@@ -36,7 +36,7 @@ const Navbar = ({ totalItems }) => {
 
           <div className={classes.button}>
            <Routes>
-          <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
+          <IconButton component={Link} to="/Cart" aria-label="Show cart items" color="inherit">
           <Badge badgeContent={totalItems} color="secondary" overlap="rectangular">
               <ShoppingCart/>
           </Badge> 

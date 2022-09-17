@@ -48,11 +48,8 @@ const App = () => {
     <Navbar totalItems={cart.total_items}/>
    <Router>
     <Routes>
-      <Route path="/" element={<Products/>}>
-      <Products products={products} onAddToCart={handleAddToCart}/>
-      </Route>
-      <Route path="/cart" element={<Cart cart={cart}/>}>
-      </Route>
+      <Route path="/" element={<Products products={products} onAddToCart={handleAddToCart}/>}/>
+      <Route path="/cart" element={<Cart cart={cart}/>}/>
       </Routes>
       </Router>
     

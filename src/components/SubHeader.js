@@ -1,11 +1,11 @@
 //source: https://learn.nucamp.co/mod/book/view.php?id=5930&chapterid=6151
 
 import { Col, Row, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link,Router } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 const SubHeader = ({ current, detail }) => {
     return (
-        <Router>
+      
         <Row>
             <Col>
                 <Breadcrumb>
@@ -14,7 +14,7 @@ const SubHeader = ({ current, detail }) => {
                     </BreadcrumbItem>
                     {detail && (
                         <BreadcrumbItem>
-                            <Link to='/directory'>Directory</Link>
+                            <Link to='/Cart'>Cart</Link>
                         </BreadcrumbItem>
                     )}
                     <BreadcrumbItem active>{current}</BreadcrumbItem>
@@ -23,7 +23,7 @@ const SubHeader = ({ current, detail }) => {
                 <hr />
             </Col>
         </Row>
-        </Router>
+   
     );
 };
 
