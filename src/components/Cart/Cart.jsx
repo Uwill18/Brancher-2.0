@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Typography, Button, Grid } from '@material-ui/core';
 import useStyles from './styles';
 import CartItem from './CartItem/CartItem';
-import SubHeader from '../SubHeader';
+// import SubHeader from '../SubHeader';
 
 const Cart = ({cart}) => {
 
@@ -42,7 +42,7 @@ if(!cart.line_items) return 'Loading..';
 <Container>
     <div className={classes.toolbar}/>
     <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
-    <SubHeader current={'Cart'}/>
+    {/* <SubHeader current={'Cart'}/> */}
      {!cart.line_items.length ? <EmptyCart/> : <FilledCart />}
 </Container>
   )

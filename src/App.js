@@ -1,11 +1,11 @@
 import './App.css';
 import React, {useState,useEffect} from 'react'
- import Products from './components/Products/Products';
+import Products from './components/Products/Products';
 //import Product from './components/Products/Product/Product';
 import Navbar from './components/Navbar/Navbar';
 import {commerce} from './lib/commerce'
 import Cart from './components/Cart/Cart';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 //import {Products, Navbar} from './components';
 
@@ -38,22 +38,21 @@ const App = () => {
   fetchCart();
   },[]);
  // console.log(products);
-  console.log(cart);
+  //console.log(cart);
 
   return (
    
     <div>
       {/* may wrap an error boundary around navbar per console:
        https://reactjs.org/docs/error-boundaries.html*/}
-    <Navbar totalItems={cart.total_items}/>
-   <Router>
+    
+   
+   <Navbar totalItems={cart.total_items}/>
     <Routes>
-      <Route path="/" element={<Products products={products} onAddToCart={handleAddToCart}/>}/>
-      <Route path="/cart" element={<Cart cart={cart}/>}/>
+      <Route path='/' element={<Products products={products} onAddToCart={handleAddToCart}/>} />
+      <Route path='/cart' element={<Cart cart={cart}/>} />
       </Routes>
-      </Router>
-    
-    
+      
     </div>
     
   )
