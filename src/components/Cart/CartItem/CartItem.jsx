@@ -11,8 +11,9 @@ const CartItem = ({item , onUpdateCartQty, onRemoveFromCart}) => {
 
   return (
     <Card>
-        <CardMedia image={item.image.source} alt={item.name} className={classes.image}/>
+        
         <CardContent className={classes.cardContent}>
+        {/* <CardMedia image={item.image.source} alt={item.name} className={classes.image}/> -- test this  */}
         <Typography variant="h4">{item.name}</Typography>
         <Typography variant="h5">{item.line_total.formatted_with_symbol}</Typography>
         </CardContent>
