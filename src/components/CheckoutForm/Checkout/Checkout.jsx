@@ -40,7 +40,7 @@ const Checkout = () => {
     </main>
     <AddressForm/>
     </>
-  )
+  );
 }
 
 export default Checkout;
