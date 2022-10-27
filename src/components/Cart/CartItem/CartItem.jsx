@@ -10,7 +10,8 @@ const CartItem = ({item , onUpdateCartQty, onRemoveFromCart}) => {
   const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
 
   return (
-    <Card>
+    <Card className="cart-item">
+      <CardMedia image={item.media.source} alt={item.name} className={classes.media} />
         
         <CardContent className={classes.cardContent}>
         {/* <CardMedia image={item.image.source} alt={item.name} className={classes.image}/> -- test this  */}
