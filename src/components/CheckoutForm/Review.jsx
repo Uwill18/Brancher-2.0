@@ -23,4 +23,4 @@ const Review = ({checkoutToken}) => {
   )
 }
 
-export default Review
+export default Review;

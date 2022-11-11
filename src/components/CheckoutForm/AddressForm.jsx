@@ -30,8 +30,8 @@ const AddressForm = ({checkoutToken}) => {
     setShippingSubdivisions(Object.keys(subdivisions)[0]);
    }
 
-   const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
-    const options = await commerce.checkout.getShippingOptions(checkoutTokenId,{country, region});
+   const fetchShippingOptions = async (checkoutTokenId, country, stateProvince = null) => {
+    const options = await commerce.checkout.getShippingOptions(checkoutTokenId,{country, region: stateProvince});
     setShippingOptions(options);
     setShippingOption(options[0].id); //sets options to the first avail option in the array
 
@@ -40,7 +40,7 @@ const AddressForm = ({checkoutToken}) => {
 
     useEffect (()=>{
      fetchShippingCountries(checkoutToken.id);
-    }, [checkoutToken.id]);
+    }, []);
 
 //second useEffect applies and mutates response according to shipping country
 

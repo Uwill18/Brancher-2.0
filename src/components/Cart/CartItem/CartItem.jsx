@@ -8,15 +8,16 @@ const CartItem = ({item , onUpdateCartQty, onRemoveFromCart}) => {
   const handleUpdateCartQty = (lineItemId, newQuantity) => onUpdateCartQty(lineItemId, newQuantity);
 
   const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
-
+  console.log(item);
   return (
     <Card className="cart-item">
-      <CardMedia image={item.media.source} alt={item.name} className={classes.media} />
-        
-        <CardContent className={classes.cardContent}>
-        {/* <CardMedia image={item.image.source} alt={item.name} className={classes.image}/> -- test this  */}
+      {/* <CardMedia image={item.image.source} alt={item.name} className={classes.image} /> */}
+      <CardMedia className={classes.media} image={item.image.url}/>
+        <CardContent>
+        <div className={classes.cardContent}>
         <Typography variant="h4">{item.name}</Typography>
         <Typography variant="h5">{item.line_total.formatted_with_symbol}</Typography>
+        </div>
         </CardContent>
         <CardActions className={classes.CardActions}>
              <div className={classes.buttons}>
@@ -27,7 +28,10 @@ const CartItem = ({item , onUpdateCartQty, onRemoveFromCart}) => {
              <Button variant="contained" type="button" color="secondary"  onClick={() => handleRemoveFromCart(item.id)}>Remove</Button>
         </CardActions>
     </Card>
+    
   )
+  
 }
+
 
 export default CartItem
