@@ -17,33 +17,15 @@ const Checkout = ({cart, order, onCaptureCheckout,error}) => {
   const nextStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep+1);
  const backStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep-1);
 
-// useEffect (()=>{
-//   const generateToken = async() =>{
-//    try{
-//     const token = await commerce.checkout.generateToken(cart.id, {type: 'cart'});
-    
-//     console.log(token);
-//     setCheckoutToken(token);
-//    } catch(error){
-
-//    }
-//   }
-//   generateToken();
-// }, [cart]);
-
-
-// const next = (data)=> {
-//   setShippingData(data);
-//   nextStep();
-// }
 
 useEffect(() => {
   if (cart.id) {
     const generateToken = async () => {
       try {
         const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
-
+        console.log(token.id);
         setCheckoutToken(token);
+        console.log(token.id);
       } catch {
         if (activeStep !== steps.length) history.push('/');
       }
@@ -104,6 +86,7 @@ const Form = () => (activeStep === 0
     <main className={classes.layout}>
       <Paper className={classes.paper}>
         <Typography variant="h4" align="center">Checkout</Typography>
+        
          {/* stepper is a component that moves as you go through the steps   */}
         <Stepper activeStep={activeStep} className={classes.stepper}>
          {steps.map((step => 
@@ -114,7 +97,6 @@ const Form = () => (activeStep === 0
             {activeStep === steps.length ? <Confirmation/> : checkoutToken && <Form/>}
       </Paper>
     </main>
-    <AddressForm/>
     </>
   );
 }
