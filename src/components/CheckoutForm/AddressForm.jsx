@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {commerce} from '../../lib/commerce';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {Label,Col,FormGroup} from 'reactstrap';
+// import { validateShippingInfo } from '../utils/validateShippingInfo';
 
 
 const AddressForm = ({checkoutToken, test}) => {
@@ -20,6 +21,12 @@ const AddressForm = ({checkoutToken, test}) => {
   const subdivisions = Object.entries(shippingSubdivisions).map(([code, name]) => ({id: code, label:name}));
   const options = shippingOptions.map((sO)=>({id:sO.id, label:`${sO.description}-(${sO.price.formatted_with_symbol})`}))
   
+
+//   const handleSubmit = (values, { resetForm }) => {
+//     console.log('form values:', values);
+//     console.log('in JSON format:', JSON.stringify(values));
+//     resetForm();
+// };
   
   const fetchShippingCountries = async(checkoutTokenId) => {
       const {countries} = await commerce.services.localeListShippingCountries(checkoutTokenId);    
@@ -31,7 +38,7 @@ const AddressForm = ({checkoutToken, test}) => {
    const fetchSubdivisions = async(countryCode) => {
     const {subdivisions} = await commerce.services.localeListSubdivisions(countryCode);
     setShippingSubdivisions(subdivisions);
-    setShippingSubdivision(Object.keys(subdivisions)[7]);
+    setShippingSubdivision(Object.keys(subdivisions)[0]);
    }
 
    const fetchShippingOptions = async (checkoutTokenId, country, stateProvince = null) => {
@@ -41,6 +48,9 @@ const AddressForm = ({checkoutToken, test}) => {
     setShippingOption(options[0].id); //sets options to the first avail option in the array
 
   }
+
+
+
 
     
     useEffect (()=>{
@@ -66,7 +76,7 @@ useEffect(()=>{
                 firstName: '',
                 lastName: '',
                 address1: '',
-                //phoneNum: '',
+                phoneNum: '',
                 email: '',
                 city: '',
                 zip: ''
@@ -76,9 +86,11 @@ useEffect(()=>{
             }}
             {...methods}
             onSubmit={methods.handleSubmit((data) =>test({...data, shippingCountry,shippingSubdivision,shippingOption}))}>
+                {/* // validate={validateShippingInfo} */}
               
             <Form>
             <Typography variant="h6" gutterBottom>Shipping Address</Typography>
+                
                 <FormGroup row>
                     <Label htmlFor='firstName' md='2'>
                         First Name
@@ -117,13 +129,18 @@ useEffect(()=>{
                     </Col>
                 </FormGroup>
 
-                {/* <FormGroup row>
+                <FormGroup row>
                     <Label htmlFor='phoneNum' md='2'>
                         Phone
                     </Label>
                     <Col md='10'>
+                    <Field
+                            name='phoneNum'
+                            placeholder='Phone Number'
+                            className='form-control'
+                        />
                     </Col>
-                </FormGroup> */}
+                </FormGroup> 
 
                 <FormGroup row>
                     <Label htmlFor='email' md='2'>
