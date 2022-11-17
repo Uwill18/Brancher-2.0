@@ -23,11 +23,12 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
       const orderData = {
         line_items: checkoutToken.line_items,
         customer: { 
-          id: shippingData.phoneNum,
+          id: shippingData.phone,
           firstname: shippingData.firstName, 
           lastname: shippingData.lastName, 
           email: shippingData.email },
-        shipping: { name: 'Primary', 
+        shipping: { 
+        name: 'Primary', 
         street: shippingData.address1,
         town_city: shippingData.city,
         county_state: shippingData.shippingSubdivision, 
@@ -42,7 +43,7 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
           },
         },
       };
-
+      console.log(orderData);
       onCaptureCheckout(checkoutToken.id, orderData);
 
       nextStep();

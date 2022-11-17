@@ -22,16 +22,19 @@ const AddressForm = ({checkoutToken, test}) => {
   const options = shippingOptions.map((sO)=>({id:sO.id, label:`${sO.description}-(${sO.price.formatted_with_symbol})`}))
   
 
-//   const handleSubmit = (values, { resetForm }) => {
-//     console.log('form values:', values);
-//     console.log('in JSON format:', JSON.stringify(values));
-//     resetForm();
-// };
+  const handleSubmit = (values, { resetForm }) => {
+    console.log('form values:', values);
+    console.log('in JSON format:', JSON.stringify(values));
+    resetForm();
+};
   
   const fetchShippingCountries = async(checkoutTokenId) => {
-      const {countries} = await commerce.services.localeListShippingCountries(checkoutTokenId);    
+      const {countries} = await commerce.services.localeListCountries(checkoutTokenId);    
+      console.log(countries);
       setShippingCountries(countries);
       setShippingCountry(Object.keys(countries)[0]);//fetches the keys of the countries to return
+      
+    
     }
 
     
@@ -45,8 +48,9 @@ const AddressForm = ({checkoutToken, test}) => {
     const options = await commerce.checkout.getShippingOptions(checkoutTokenId,{country, region: stateProvince});
     
     setShippingOptions(options);
+    console.log(options)
     setShippingOption(options[0].id); //sets options to the first avail option in the array
-
+    console.log(options);
   }
 
 
@@ -76,13 +80,10 @@ useEffect(()=>{
                 firstName: '',
                 lastName: '',
                 address1: '',
-                phoneNum: '',
+                phone: '',
                 email: '',
                 city: '',
                 zip: ''
-                //agree: false,
-                //contactType: 'By Phone',
-                //feedback: ''
             }}
             {...methods}
             onSubmit={methods.handleSubmit((data) =>test({...data, shippingCountry,shippingSubdivision,shippingOption}))}>
@@ -130,12 +131,12 @@ useEffect(()=>{
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label htmlFor='phoneNum' md='2'>
+                    <Label htmlFor='phone' md='2'>
                         Phone
                     </Label>
                     <Col md='10'>
                     <Field
-                            name='phoneNum'
+                            name='phone'
                             placeholder='Phone Number'
                             className='form-control'
                         />
@@ -226,11 +227,9 @@ useEffect(()=>{
      </Form>
         </Formik> 
         
-        
-         
-    
         </>
   );
+  //console.log(data);
 }
 
 export default AddressForm
