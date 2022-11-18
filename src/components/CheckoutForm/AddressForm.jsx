@@ -22,11 +22,11 @@ const AddressForm = ({checkoutToken, test}) => {
   const options = shippingOptions.map((sO)=>({id:sO.id, label:`${sO.description}-(${sO.price.formatted_with_symbol})`}))
   
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log('form values:', values);
-    console.log('in JSON format:', JSON.stringify(values));
-    resetForm();
-};
+//   const handleSubmit = (values, { resetForm }) => {
+//     console.log('form values:', values);
+//     console.log('in JSON format:', JSON.stringify(values));
+//     resetForm();
+// };
   
   const fetchShippingCountries = async(checkoutTokenId) => {
       const {countries} = await commerce.services.localeListCountries(checkoutTokenId);    
@@ -86,7 +86,10 @@ useEffect(()=>{
                 zip: ''
             }}
             {...methods}
-            onSubmit={methods.handleSubmit((data) =>test({...data, shippingCountry,shippingSubdivision,shippingOption}))}>
+            onSubmit={methods.handleSubmit((data) =>test({...data, 
+            shippingCountry,
+            shippingSubdivision,
+            shippingOption}))}>
                 {/* // validate={validateShippingInfo} */}
               
             <Form>
@@ -228,8 +231,9 @@ useEffect(()=>{
         </Formik> 
         
         </>
+        
   );
-  //console.log(data);
+
 }
 
 export default AddressForm
