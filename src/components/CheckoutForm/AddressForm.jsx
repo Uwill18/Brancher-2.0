@@ -77,13 +77,13 @@ useEffect(()=>{
     <>
     <Formik
             initialValues={{
-                firstName: '',
-                lastName: '',
-                address1: '',
-                phone: '',
-                email: '',
-                city: '',
-                zip: ''
+                firstName: 'Uri',
+                lastName: 'Easter',
+                address1: '221b Baker Street',
+                phone: '940-331-8295',
+                email: 'uwill18@wgu.edu',
+                city: 'Allen',
+                zip: '75002'
             }}
             {...methods}
             onSubmit={methods.handleSubmit((data) =>test({...data, 

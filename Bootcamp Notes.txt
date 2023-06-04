@@ -1,0 +1,14 @@
+json-server -H 0.0.0.0 --watch db.json -p 3001 -d 2000
+
+https://stackoverflow.com/questions/29129128/node-js-command-prompt-starting-in-z-instead-of-c
+
+cd c:
+
+mongod --dbpath=data
+
+
+--convert forms to formik
+--go through errors and try at least five approaches a piece through the console
+
+Node HTTP Example 1
+created a server, and a listener that reported server activity to the console. Then using the server activity going on in the local port, I `gathered more info in POSTMAN.

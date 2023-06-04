@@ -61,7 +61,7 @@ let Confirmation = () => (order.customer ? (
 ));
 
 if (error) {
-  Confirmation = () => (
+ Confirmation = () => (
     <>
       <Typography variant="h5">Error: {error}</Typography>
       <br />
@@ -89,10 +89,11 @@ const Form = () => (activeStep === 0
         
          {/* stepper is a component that moves as you go through the steps   */}
         <Stepper activeStep={activeStep} className={classes.stepper}>
-         {steps.map((step => 
-            <Step key={step}>
-                <StepLabel>{step}</StepLabel>
-            </Step>))} 
+                   {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
             </Stepper>
             {activeStep === steps.length ? <Confirmation/> : checkoutToken && <Form/>}
       </Paper>

@@ -1,0 +1,120 @@
+Troubleshooting steps for ecommerce
+------------------------------------------
+
+review the checkout now button x
+
+const PKEY = process.env.REACT_APP_STRIPE;
+
+within cart item place:  
+const [stripeToken, setStripeToken] = useState(null);
+
+
+const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  x          <StripeCheckout
+              name="Lama Shop"
+              image="https://avatars.githubusercontent.com/u/1486366?v=4"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <Button>CHECKOUT NOW</Button>
+            </StripeCheckout>
+//button above includes shop name, image, and they multiply the shop amount * 100 since stripe works in cents
+
+setup a routes folder, copy and paste stripe.js
+
+
+give widget info
+--find stripes api
+--to generate invoice
+--route back to successful confirmation info, automatically route api for nvoice generator to send info back to consumer
+
+success >
+cancel >
+both are in the confirmation function of project, might have to break them up for success and cancel
+
+https://github.com/safak/youtube/blob/mern-ecommerce-app/client/src/pages/Success.jsx
+
+
+C:\Users\USERNAME\AppData\Local\Packages\Microsoft. Windows. ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets 
+--------------------------------------------------------------------------------------------------------
+Further ideas
+
+   //"start": "react-scripts start",
+
+POSTMAN
+http://localhost:3001/checkout
+
+firstname
+lastname                     
+address
+phone
+email
+city
+zip
+
+------------------------------------------------------------------------------------------------------
+
+--does not recognize passport functions
+--npm package shoes passport functions are installed.
+-----------stripe project object-------------------
+customer.id x (comes as email for some reason)
+customer.billing_details.address.city
+customer.billing_details.address.country
+customer.billing_details.address.postal_code
+customer.billing_details.address.state
+customer.billing_details.email
+customer.billing_details.name x
+customer.created
+customer.description
+----------------------------------------
+-----react-formik----------------------
+firstname
+lastname
+address
+phone
+email
+city
+zip
+shipping details--> country, subdivision, international/domestic
+enter card details
+on clicking pay > send name, email, and payment details to stripe
+afterwards try
+----------------------------------------
+-------stripe interface----------------
+name = firstname +" "+ lastname
+email
+---------------------------------------
+
+
+
+"name": "Michael kyle",
+        "address":{
+       "line1": "4321 Major Payne",
+        "postal_code": "06381",
+         "city": "Stamford",
+         "state": "Connecticut"
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
