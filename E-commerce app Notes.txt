@@ -2,9 +2,10 @@ Troubleshooting steps for ecommerce
 ------------------------------------------
 --visit FAQs:
 https://commercejs.com/docs/community/faq/
---email: javascriptmastery00@gmail.com
---watch from 1h 50m to end of video
---use GitHub Copilot
+--email: javascriptmastery00@gmail.com today
+---------------------------------------------------
+--watch from 1h 50m to end of video, wednesday, thursday
+--use GitHub Copilot, Friday
 --check slack
 
 
@@ -120,6 +121,16 @@ email
 
 
 ----------------------------------------------------------------
+
+
+
+Friday
+additionally you may try:
+https://www.youtube.com/watch?v=khGypss-RJs
+https://www.youtube.com/watch?v=XKWJFpZYVAQ
+https://www.youtube.com/watch?v=_8M-YVY76O8
+
+
 commerce.js
 may try changing the key to:
 REACT_APP_STRIPE_PUBLIC_KEY
@@ -127,11 +138,6 @@ REACT_APP_STRIPE_PUBLIC_KEY
 
 server.js
 review video for posting to stripe
-
-
-additionally you may try:
-https://www.youtube.com/watch?v=XKWJFpZYVAQ
-https://www.youtube.com/watch?v=_8M-YVY76O8
 
 
 
