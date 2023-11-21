@@ -77,22 +77,22 @@ useEffect(()=>{
     <>
     <Formik
             initialValues={{
-                firstName: 'Uri',
-                lastName: 'Easter',
+                firstName: 'Hoshi',
+                lastName: 'Holiday',
                 address1: '221b Baker Street',
                 phone: '940-331-8295',
-                email: 'uwill18@wgu.edu',
+                email: 'hoshiholiday@gmail.com',
                 city: 'Allen',
                 zip: '75002'
             }}
             {...methods}
-            onSubmit={methods.handleSubmit((data) =>test({...data, 
+            >
+                {/* // validate={validateShippingInfo} */}
+              
+            <Form onSubmit={methods.handleSubmit((data) =>test({...data, 
             shippingCountry,
             shippingSubdivision,
             shippingOption}))}>
-                {/* // validate={validateShippingInfo} */}
-              
-            <Form>
             <Typography variant="h6" gutterBottom>Shipping Address</Typography>
                 
                 <FormGroup row>
@@ -152,6 +152,7 @@ useEffect(()=>{
                     </Label>
                     <Col md='10'>
                     <Field
+                            id="email"
                             name='email'
                             placeholder='Email'
                             type='email'
@@ -166,6 +167,7 @@ useEffect(()=>{
                     </Label>
                     <Col md='10'>
                     <Field
+                            id="city"
                             name='city'
                             placeholder='City'
                             className='form-control'

@@ -12,6 +12,7 @@ const Checkout = ({cart, order, onCaptureCheckout,error}) => {
   const[activeStep,setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
+  const[isFinished,setIsFinished] = useState(false);
   const classes = useStyles();
   const history = useNavigate();
   const nextStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep+1);
@@ -27,7 +28,8 @@ useEffect(() => {
         setCheckoutToken(token);
         console.log(token.id);
       } catch {
-        if (activeStep !== steps.length) history.push('/');
+        // if (activeStep !== steps.length) history.push('/');
+        history.pushState('/');
       }
     };
 
@@ -41,6 +43,11 @@ const test = (data) => {
   nextStep();
 };
 
+const timeout = () => {
+  setTimeout(() => {
+    setIsFinished(true)
+  }, 3000);
+}
 
 
 
@@ -49,16 +56,26 @@ let Confirmation = () => (order.customer ? (
     <div>
       <Typography variant="h5">Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}!</Typography>
       <Divider className={classes.divider} />
-      <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
     </div>
     <br />
     <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
   </>
+) : isFinished ? (
+  <>
+    <div>
+      <Typography variant="h5">Thank you for your purchase! </Typography>
+      <Divider className={classes.divider} />
+    </div>
+    <br />
+    <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+  </>
+
 ) : (
   <div className={classes.spinner}>
     <CircularProgress />
   </div>
 ));
+console.log(order.customer)
 
 if (error) {
  Confirmation = () => (
@@ -69,15 +86,16 @@ if (error) {
     </>
   );
 }
-
+console.log(order.customer)
   
   
  
   
 const Form = () => (activeStep === 0
   ? <AddressForm checkoutToken={checkoutToken} nextStep={nextStep} setShippingData={setShippingData} test={test} />
-  : <PaymentForm checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} shippingData={shippingData} onCaptureCheckout={onCaptureCheckout} />);
+  : <PaymentForm checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} shippingData={shippingData} onCaptureCheckout={onCaptureCheckout} timeout={timeout}/>);
  
+  console.log(onCaptureCheckout)
  
   return (
     <>
@@ -100,6 +118,8 @@ const Form = () => (activeStep === 0
     </main>
     </>
   );
+  console.log(onCaptureCheckout)
 }
+
 
 export default Checkout;
