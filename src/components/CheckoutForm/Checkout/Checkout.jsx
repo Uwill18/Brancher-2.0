@@ -77,15 +77,15 @@ let Confirmation = () => (order.customer ? (
 ));
 console.log(order.customer)
 
-if (error) {
- Confirmation = () => (
-    <>
-      <Typography variant="h5">Error: {error}</Typography>
-      <br />
-      <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
-    </>
-  );
-}
+// if (error) {
+//  Confirmation = () => (
+//     <>
+//       <Typography variant="h5">Error: {error}</Typography>
+//       <br />
+//       <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+//     </>
+//   );
+// }
 console.log(order.customer)
   
   
