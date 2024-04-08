@@ -129,7 +129,7 @@ additionally you may try:
 https://www.youtube.com/watch?v=khGypss-RJs
 https://www.youtube.com/watch?v=XKWJFpZYVAQ
 https://www.youtube.com/watch?v=_8M-YVY76O8
-
+https://www.linkedin.com/learning/learning-redux-toolkit/why-you-should-take-this-course?u=2045532
 
 commerce.js
 may try changing the key to:

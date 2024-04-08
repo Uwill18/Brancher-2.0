@@ -1,13 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Typography, Button, Divider } from '@material-ui/core';
-import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
+import { Elements, CardElement, ElementsConsumer,useElements, useStripe } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import axios from "axios";
 
 import Review from './Review';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
+
+
+
 const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptureCheckout, timeout }) => {
+ 
+  const [success, setSuccess] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
 
@@ -15,41 +33,51 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
 
     const cardElement = elements.getElement(CardElement);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
+    const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: elements.getElement(CardElement) });
 
-    if (error) {
-      console.log('[error]', error);
-    } else {
-      const orderData = {
-        line_items: checkoutToken.line_items,
-        customer: { 
-          //id: shippingData.phone,
-          firstname: shippingData.firstName, 
-          lastname: shippingData.lastName, 
-          email: shippingData.email },
-        shipping: { 
-        name: 'Primary', 
-        street: shippingData.address1,
-        town_city: shippingData.city,
-        county_state: shippingData.shippingSubdivision, 
-        postal_zip_code: shippingData.zip, 
-        country: shippingData.shippingCountry },
-
-        fulfillment: { shipping_method: shippingData.shippingOption },
-        payment: {
-          gateway: 'stripe',
-          stripe: {
-            payment_method_id: paymentMethod.id,
-          },
-        },
-      };
-      console.log(orderData);
-      onCaptureCheckout(checkoutToken.id, orderData);
-      timeout();
-      console.log(orderData);
-      nextStep();
-      console.log(orderData);
+    if(!error){
+      try{
+        
+      }
     }
+
+
+
+
+
+    // if (error) {
+    //   console.log('[error]', error);
+    // } else {
+    //   const orderData = {
+    //     line_items: checkoutToken.line_items,
+    //     customer: { 
+    //       //id: shippingData.phone,
+    //       firstname: shippingData.firstName, 
+    //       lastname: shippingData.lastName, 
+    //       email: shippingData.email },
+    //     shipping: { 
+    //     name: 'Primary', 
+    //     street: shippingData.address1,
+    //     town_city: shippingData.city,
+    //     county_state: shippingData.shippingSubdivision, 
+    //     postal_zip_code: shippingData.zip, 
+    //     country: shippingData.shippingCountry },
+
+    //     fulfillment: { shipping_method: shippingData.shippingOption },
+    //     payment: {
+    //       gateway: 'stripe',
+    //       stripe: {
+    //         payment_method_id: paymentMethod.id,
+    //       },
+    //     },
+    //   };
+    //   console.log(orderData);
+    //   onCaptureCheckout(checkoutToken.id, orderData);
+    //   timeout();
+    //   console.log(orderData);
+    //   nextStep();
+    //   console.log(orderData);
+    // }
   };
 
   return (
