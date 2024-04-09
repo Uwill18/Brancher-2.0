@@ -26,19 +26,31 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
  
  
  
-  const handleSubmit = async (event, elements, stripe) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) return;
+    // if (!stripe || !elements) return;
 
-    const cardElement = elements.getElement(CardElement);
+    // const cardElement = elements.getElement(CardElement);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: elements.getElement(CardElement) });
 
     if(!error){
       try{
-        
+        const {id} = paymentMethod
+        const response = await axios.post("http://localhost:4000/payment", {
+          amount: 10000,
+          id
+        })
+        if(response.data.success){
+          console.log("Successful payment")
+          setSuccess(true)
+        }
+      }catch(error){
+        console.log("Error", error)
       }
+    } else{
+      console.log(error.message)
     }
 
 
@@ -82,12 +94,12 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
 
   return (
     <>
-      <Review checkoutToken={checkoutToken} />
+
+<Review checkoutToken={checkoutToken} />
       <Divider />
       <Typography variant="h6" gutterBottom style={{ margin: '20px 0' }}>Payment method</Typography>
       <Elements stripe={stripePromise}>
-        <ElementsConsumer>{({ elements, stripe }) => (
-          <form onSubmit={(e) => handleSubmit(e, elements, stripe)}
+          {!success ? <form onSubmit={(e) => handleSubmit(e, elements, stripe)}
            action="checkout"
            method="POST">
 
@@ -103,9 +115,12 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
                 {checkoutToken.subtotal.formatted_with_symbol}
               </Button>
             </div>
-          </form>
-        )}
-        </ElementsConsumer>
+          </form> : 
+          <div>
+            <Typography variant="h5">Thank you for your purchase! </Typography>
+            </div>}
+
+
       </Elements>
     </>
   );
