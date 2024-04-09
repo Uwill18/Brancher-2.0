@@ -94,12 +94,16 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
 
   return (
     <>
-
+<Elements stripe={stripePromise}>
 <Review checkoutToken={checkoutToken} />
       <Divider />
       <Typography variant="h6" gutterBottom style={{ margin: '20px 0' }}>Payment method</Typography>
-      <Elements stripe={stripePromise}>
-          {!success ? <form onSubmit={(e) => handleSubmit(e, elements, stripe)}
+      
+          {!success ? 
+          
+          <Elements>
+          <Elements stripe={stripePromise}>
+          <form onSubmit={(e) => handleSubmit(e, elements, stripe)}
            action="checkout"
            method="POST">
 
@@ -115,10 +119,14 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
                 {checkoutToken.subtotal.formatted_with_symbol}
               </Button>
             </div>
-          </form> : 
+          </form> 
+          </Elements>
+          </Elements>: 
+          <Elements stripe={stripePromise}>
           <div>
             <Typography variant="h5">Thank you for your purchase! </Typography>
-            </div>}
+            </div>
+            </Elements>}
 
 
       </Elements>
