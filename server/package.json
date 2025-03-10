@@ -8,5 +8,8 @@
     "start": "node server.js"
   },
   "author": "Uri W.Easter",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "server": "file:"
+  }
 }

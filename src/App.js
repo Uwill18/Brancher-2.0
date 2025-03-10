@@ -109,7 +109,7 @@ const App = () => {
       onCaptureCheckout={handleCaptureCheckout}
       error={errorMessage}/>} />
       </Routes>
-      
+      <Products/>
     </div>
     
   )
